@@ -4,7 +4,7 @@ export default function TeamMember(props) {
   const { details } = props
 
   if (!details) {
-    return <h3>Working fetching your friend&apos;s details...</h3>
+    return <h3>Working fetching your team&apos;s details...</h3>
   }
 
   return (

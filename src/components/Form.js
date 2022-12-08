@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import styled from 'styled-components';
+import React from "react";
 
 const Form = (props) => {
+
     const handleChange = evt => {
-        const { name } = evt.target;
-        const { value } = evt.target;
-        props.update(name, value);
-    };
+        const { name, value } = evt.target;
+        props.change(name, value);
+    }
 
     const onSubmit = evt => {
         evt.preventDefault();
@@ -15,14 +14,12 @@ const Form = (props) => {
 
     return( 
         <form onSubmit={onSubmit}>
-            <label>
-                Name
+            <label>Name
                 <input 
-                    type='text'
                     name='name'
                     placeholder="Type Your Full Name"
                     value={props.value}
-                    onChange={event => handleChange(event)}
+                    onChange={handleChange}
                 />
             </label>
             <label>
@@ -32,7 +29,7 @@ const Form = (props) => {
                     name='email'
                     placeholder="Type Your Email"
                     value={props.value}
-                    onChange={event => handleChange(event)}
+                    onChange={handleChange}
                 />
             </label>
             <label>
@@ -45,10 +42,10 @@ const Form = (props) => {
                 </select>
             </label>
             <div>
-                <button>submit</button>
+                <input type='submit' value='submit' />
             </div>
         </form> 
-    );
+    )
 }
 
 export default Form;

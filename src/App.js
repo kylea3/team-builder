@@ -12,48 +12,38 @@ function App() {
     role: ''
   });
   const [team, setTeam] = useState([]);
-  const [formError, setFormError] = useState('');
-
-  const updateForm = (inputName, inputValue) => {
-    setTeamList({ ...teamList, [inputName]: inputValue })
-  }
 
   const submitForm = () => {
-    const newTeam = {
-      name: teamList.name.trim(),
-      email: teamList.email.trim(),
-      role: teamList.role
-    }
+    setTeam({teamList, ...team});
 
-    if (!teamList.name || !teamList.email || teamList.role) {
-      setFormError('You need to fill out name, email, and role!')
-    }
+      setTeamList({
+        name: '',
+        email: '',
+        role: ''
+      });
 
-    setTeamList({
-      name: '',
-      email: '',
-      role: ''
-    });
-  }
+}
+  const updateForm = (inputName, inputValue) => {
+      setTeamList({ ...teamList, [inputName]: inputValue })
+    }
+    
   return (
     <div className="App">
       <h1>New Team Member Form</h1>
-      {formError && <h2>{formError}</h2>}
       
       <Form 
       values={teamList}
       update={updateForm}
       submit={submitForm}
       />
-      {
-        team.map(team => {
+      { team.map((member, idx) => {
           return (
-            <TeamMember key={team.id} details={team} />
+            <TeamMember key={idx} details={member} />
           )
         })
       }
     </div>
-  );
+  )
 }
 
 export default App;
