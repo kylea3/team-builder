@@ -1,10 +1,10 @@
 import React from "react";
 
 const Form = (props) => {
-
+console.log(props);
     const handleChange = evt => {
         const { name, value } = evt.target;
-        props.change(name, value);
+        props.update(name, value);
     }
 
     const onSubmit = evt => {
@@ -18,7 +18,7 @@ const Form = (props) => {
                 <input 
                     name='name'
                     placeholder="Type Your Full Name"
-                    value={props.value}
+                    value={props.values.name}
                     onChange={handleChange}
                 />
             </label>
@@ -28,13 +28,13 @@ const Form = (props) => {
                     type='email'
                     name='email'
                     placeholder="Type Your Email"
-                    value={props.value}
+                    value={props.values.email}
                     onChange={handleChange}
                 />
             </label>
             <label>
                 Role
-                <select value={props.value} name="role" onChange={event => handleChange(event)}>
+                <select value={props.values.role} name="role" onChange={event => handleChange(event)}>
                     <option value="">Select a Role</option>
                     <option value="Front-End Engineer">Front-End Engineer</option>
                     <option value="Back-End Engineer">Back-end Engineer</option>

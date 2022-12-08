@@ -6,7 +6,7 @@ import TeamMember from './components/TeamMember';
 
 
 function App() {
-  const [teamList, setTeamList] = useState({
+  const [teamMember, setTeamMember] = useState({
     name: '',
     email: '',
     role: ''
@@ -14,17 +14,12 @@ function App() {
   const [team, setTeam] = useState([]);
 
   const submitForm = () => {
-    setTeam({teamList, ...team});
-
-      setTeamList({
-        name: '',
-        email: '',
-        role: ''
-      });
+    setTeam([teamMember, ...team]);
+    setTeamMember({name: '', email: '', role: ''});
 
 }
   const updateForm = (inputName, inputValue) => {
-      setTeamList({ ...teamList, [inputName]: inputValue })
+      setTeamMember({ ...teamMember, [inputName]: inputValue })
     }
     
   return (
@@ -32,7 +27,7 @@ function App() {
       <h1>New Team Member Form</h1>
       
       <Form 
-      values={teamList}
+      values={teamMember}
       update={updateForm}
       submit={submitForm}
       />
